@@ -1,0 +1,16 @@
+{
+  "mappings": [
+    {
+      "sourceField": "First_Name",
+      "destinationField": "firstName"
+    },
+    {
+      "sourceField": "Last_Name",
+      "destinationField": "lastName"
+    },
+    {
+      "sourceField": "mobile_no",
+      "destinationField": "mobileNo"
+    }
+  ]
+}

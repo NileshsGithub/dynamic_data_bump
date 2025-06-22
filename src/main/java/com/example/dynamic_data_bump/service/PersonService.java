@@ -27,8 +27,8 @@ public class PersonService {
 
         Map<String, String> fieldMap = config.getMappings().stream()
                 .collect(Collectors.toMap(
-                        m -> m.getSourceField().toLowerCase(),
-                        m -> m.getDestinationField().toLowerCase()
+                        map -> map.getSourceField().toLowerCase(),
+                        FieldMapping::getDestinationField
                 ));
 
         List<Person> people = new ArrayList<>();
@@ -57,8 +57,8 @@ public class PersonService {
                     String value = row[index];
 
                     switch (destination) {
-                        case "firstname" -> person.setFirstName(value);
-                        case "lastname" -> person.setLastName(value);
+                        case "firstName" -> person.setFirstName(value);
+                        case "lastName" -> person.setLastName(value);
                         case "mobileNo" -> person.setMobileNo(value);
                     }
                 }

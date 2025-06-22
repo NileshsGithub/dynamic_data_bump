@@ -22,8 +22,8 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public Integer uploadUsingMappedFields(InputStream inputStream) throws IOException, CsvValidationException {
-        CsvFieldMappingConfig config = loadFieldMappingConfig();
+    public Integer savePersonsWithFieldMapping(InputStream inputStream) throws IOException, CsvValidationException {
+        CsvFieldMappingConfig config = loadFieldMappingsFromConfig();
 
         Map<String, String> fieldMap = config.getMappings().stream()
                 .collect(Collectors.toMap(
@@ -69,7 +69,7 @@ public class PersonService {
         return people.size();
     }
 
-    private CsvFieldMappingConfig loadFieldMappingConfig() throws IOException {
+    private CsvFieldMappingConfig loadFieldMappingsFromConfig() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(
                 new ClassPathResource("config/config.json").getInputStream(),

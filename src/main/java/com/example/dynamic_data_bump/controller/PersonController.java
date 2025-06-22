@@ -22,8 +22,8 @@ public class PersonController {
     }
 
     @GetMapping("/load-mapped")
-    public ResponseEntity<String> loadMappedFromClasspath() throws IOException, CsvValidationException {
-        int count = personService.uploadUsingMappedFields(
+    public ResponseEntity<String> readCsvFromClasspathAndImport() throws IOException, CsvValidationException {
+        int count = personService.savePersonsWithFieldMapping(
                 new ClassPathResource("csv/persons.csv").getInputStream()
         );
         return ResponseEntity.ok("Loaded " + count + " persons using mapped fields.");
